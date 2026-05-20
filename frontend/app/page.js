@@ -1,0 +1,138 @@
+"use client";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
+export default function HomePage() {
+  const router = useRouter();
+  const [checking, setChecking] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      router.push("/dashboard");
+    } else {
+      setChecking(false);
+    }
+  }, []);
+
+  if (checking) return null;
+
+  return (
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(135deg, #1e3a5f 0%, #2e86ab 60%, #1e3a5f 100%)",
+      display: "flex", flexDirection: "column"
+    }}>
+
+      {/* Top Nav */}
+      <nav style={{
+        display: "flex", justifyContent: "space-between", alignItems: "center",
+        padding: "1.25rem 2rem", borderBottom: "1px solid rgba(255,255,255,0.1)"
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+          <span style={{ fontSize: "1.5rem" }}>💰</span>
+          <span style={{ color: "#fff", fontWeight: "700", fontSize: "1.1rem" }}>Expense Tracker</span>
+        </div>
+        <div style={{ display: "flex", gap: "0.75rem" }}>
+          <Link href="/login" style={{
+            padding: "0.5rem 1.25rem", borderRadius: "10px",
+            border: "1.5px solid rgba(255,255,255,0.5)", color: "#fff",
+            fontSize: "0.875rem", fontWeight: "500", textDecoration: "none",
+            transition: "all 0.2s"
+          }}>Login</Link>
+          <Link href="/register" style={{
+            padding: "0.5rem 1.25rem", borderRadius: "10px",
+            background: "#fff", color: "#1e3a5f",
+            fontSize: "0.875rem", fontWeight: "700", textDecoration: "none"
+          }}>Get Started</Link>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <div style={{
+        flex: 1, display: "flex", flexDirection: "column",
+        alignItems: "center", justifyContent: "center",
+        textAlign: "center", padding: "3rem 1.5rem"
+      }}>
+        <div style={{
+          background: "rgba(255,255,255,0.15)", backdropFilter: "blur(10px)",
+          borderRadius: "24px", padding: "1rem 1.75rem", marginBottom: "2rem",
+          border: "1px solid rgba(255,255,255,0.2)", display: "inline-block"
+        }}>
+          <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "0.85rem", fontWeight: "500" }}>
+            Your personal finance companion
+          </span>
+        </div>
+
+        <h1 style={{
+          color: "#fff", fontSize: "3rem", fontWeight: "800",
+          lineHeight: "1.15", letterSpacing: "-1px", marginBottom: "1.25rem",
+          maxWidth: "700px"
+        }}>
+          Track Smarter.<br />
+          <span style={{ color: "#7dd3fc" }}>Spend Wiser.</span>
+        </h1>
+
+        <p style={{
+          color: "rgba(255,255,255,0.75)", fontSize: "1.1rem",
+          maxWidth: "520px", lineHeight: "1.7", marginBottom: "2.5rem"
+        }}>
+          A smart expense tracking tool that automatically categorises your spending,
+          alerts you before you overspend, and flags unusual transactions — all in one place.
+        </p>
+
+        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
+          <Link href="/register" style={{
+            padding: "0.85rem 2rem", borderRadius: "12px",
+            background: "#fff", color: "#1e3a5f",
+            fontSize: "1rem", fontWeight: "700", textDecoration: "none",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.2)"
+          }}>
+            Create Free Account →
+          </Link>
+          <Link href="/login" style={{
+            padding: "0.85rem 2rem", borderRadius: "12px",
+            background: "rgba(255,255,255,0.15)", color: "#fff",
+            fontSize: "1rem", fontWeight: "600", textDecoration: "none",
+            border: "1.5px solid rgba(255,255,255,0.4)"
+          }}>
+            Sign In
+          </Link>
+        </div>
+
+        {/* Feature Cards */}
+        <div style={{
+          display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+          gap: "1rem", marginTop: "4rem", maxWidth: "900px", width: "100%"
+        }}>
+          {[
+            { icon: "🏷️", title: "Auto Categorisation",  desc: "Keywords instantly sort your expenses into categories" },
+            { icon: "⚠️", title: "Budget Alerts",        desc: "Get warned at 80% so you never overspend again" },
+            { icon: "🚨", title: "Anomaly Detection",    desc: "Unusual or duplicate charges are flagged automatically" },
+            { icon: "📊", title: "Visual Dashboard",     desc: "Pie charts, bar charts, and a spending heatmap" },
+          ].map((f, i) => (
+            <div key={i} style={{
+              background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)",
+              borderRadius: "16px", padding: "1.25rem",
+              border: "1px solid rgba(255,255,255,0.15)", textAlign: "left"
+            }}>
+              <div style={{ fontSize: "1.75rem", marginBottom: "0.6rem" }}>{f.icon}</div>
+              <p style={{ color: "#fff", fontWeight: "600", fontSize: "0.9rem", marginBottom: "0.35rem" }}>{f.title}</p>
+              <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.8rem", lineHeight: "1.5" }}>{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div style={{
+        textAlign: "center", padding: "1.25rem",
+        borderTop: "1px solid rgba(255,255,255,0.1)",
+        color: "rgba(255,255,255,0.5)", fontSize: "0.8rem"
+      }}>
+        Track smarter · Spend better · Save more
+      </div>
+    </div>
+  );
+}
