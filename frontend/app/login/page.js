@@ -19,6 +19,7 @@ export default function LoginPage() {
     try {
       const res = await API.post("/auth/login", form);
       sessionStorage.setItem("token", res.data.access_token);
+      sessionStorage.setItem("user_name", res.data.name);
       toast.success("Welcome back!");
       router.push("/dashboard");
     } catch (err) {
