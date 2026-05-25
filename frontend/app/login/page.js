@@ -18,7 +18,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const res = await API.post("/auth/login", form);
-      localStorage.setItem("token", res.data.access_token);
+      sessionStorage.setItem("token", res.data.access_token);
       toast.success("Welcome back!");
       router.push("/dashboard");
     } catch (err) {
@@ -127,7 +127,7 @@ export default function LoginPage() {
           <div style={{ textAlign: "center", marginTop: "1.25rem", fontSize: "0.875rem", color: "#6b7280" }}>
             Don&apos;t have an account?{" "}
             <Link href="/register" style={{ color: "#2e86ab", fontWeight: "600", textDecoration: "none" }}>
-              Create one →
+              Sign Up →
             </Link>
           </div>
         </div>

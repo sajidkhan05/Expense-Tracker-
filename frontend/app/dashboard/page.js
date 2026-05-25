@@ -14,13 +14,13 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) { router.push("/login"); return; }
+    if (!sessionStorage.getItem("token")) { router.push("/login"); return; }
     fetchDashboard();
   }, []);
 
   const fetchDashboard = async () => {
   try {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     const res = await API.get("/dashboard/summary", {
       headers: { Authorization: `Bearer ${token}` }
     });

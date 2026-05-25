@@ -13,13 +13,13 @@ export default function BudgetPage() {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) { router.push("/login"); return; }
+    if (!sessionStorage.getItem("token")) { router.push("/login"); return; }
     fetchBudget();
   }, []);
 
   const fetchBudget = async () => {
   try {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     const res = await API.get("/budget/", {
       headers: { Authorization: `Bearer ${token}` }
     });
@@ -33,7 +33,7 @@ export default function BudgetPage() {
   e.preventDefault();
   if (!amount || parseFloat(amount) <= 0) { toast.error("Enter a valid amount"); return; }
   setSaving(true);
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   try {
     const res = await API.post("/budget/", { monthly_limit: parseFloat(amount) }, {
       headers: { Authorization: `Bearer ${token}` }

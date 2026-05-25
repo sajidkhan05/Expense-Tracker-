@@ -17,13 +17,13 @@ export default function ExpensesPage() {
   const [suggesting, setSuggesting] = useState(false);
 
   useEffect(() => {
-   if (!localStorage.getItem("token")) { router.push("/login"); return; }
+   if (!sessionStorage.getItem("token")) { router.push("/login"); return; }
     fetchExpenses();
   }, []);
 
   const fetchExpenses = async () => {
   try {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     const res = await API.get("/expenses/", {
       headers: { Authorization: `Bearer ${token}` }
     });
@@ -46,7 +46,7 @@ export default function ExpensesPage() {
 
   const handleSubmit = async (e) => {
   e.preventDefault();
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const headers = { Authorization: `Bearer ${token}` };
   try {
     if (editId) {
@@ -70,7 +70,7 @@ export default function ExpensesPage() {
 
   const handleDelete = async (id) => {
   if (!confirm("Delete this expense?")) return;
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   try {
     await API.delete(`/expenses/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
@@ -140,7 +140,7 @@ export default function ExpensesPage() {
                 <label style={{ display: "block", fontSize: "0.78rem", fontWeight: "600", color: "#374151", marginBottom: "0.35rem" }}>
                   Description {suggesting && <span style={{ color: "#2e86ab", fontWeight: "400" }}>— detecting category...</span>}
                 </label>
-                <input type="text" required value={form.description}
+                <input type="text" value={form.description}
                   onChange={handleDescriptionChange}
                   placeholder="e.g. Lunch at restaurant, Bus ticket..."
                   style={inputStyle}

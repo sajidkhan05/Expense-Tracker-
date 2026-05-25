@@ -8,7 +8,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
     toast.success("Logged out successfully");
     router.push("/");
   };

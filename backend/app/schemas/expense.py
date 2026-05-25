@@ -4,13 +4,13 @@ from datetime import date
 class ExpenseCreate(BaseModel):
     amount: float
     date: date
-    description: str
+    description: str = ""
     category: str
 
 class ExpenseUpdate(BaseModel):
     amount: float
     date: date
-    description: str
+    description: str = ""
     category: str
 
 class ExpenseOut(BaseModel):

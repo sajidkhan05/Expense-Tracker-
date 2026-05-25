@@ -57,7 +57,7 @@ export default function RegisterPage() {
           boxShadow: "0 25px 50px rgba(0,0,0,0.25)"
         }}>
           <h2 style={{ fontSize: "1.375rem", fontWeight: "700", color: "#111827", marginBottom: "0.25rem" }}>
-            Create account ✨
+            Sign Up ✨
           </h2>
           <p style={{ color: "#6b7280", fontSize: "0.875rem", marginBottom: "1.5rem" }}>
             Start tracking your expenses today
@@ -135,7 +135,7 @@ export default function RegisterPage() {
                 fontSize: "0.9rem", fontWeight: "600", cursor: loading ? "not-allowed" : "pointer",
                 transition: "all 0.2s"
               }}>
-              {loading ? "⏳ Creating account..." : "Create Account →"}
+              {loading ? "⏳ Creating account..." : "Sign Up →"}
             </button>
           </form>
 
