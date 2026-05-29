@@ -76,6 +76,8 @@ export default function LoginPage() {
                 <input
                   type="email" name="email" value={form.email}
                   onChange={handleChange} required placeholder="you@example.com"
+                  autoComplete="email"
+                  suppressHydrationWarning
                   style={{
                     width: "100%", padding: "0.7rem 0.75rem 0.7rem 2.5rem",
                     border: "1.5px solid #e5e7eb", borderRadius: "12px",
@@ -97,6 +99,8 @@ export default function LoginPage() {
                 <input
                   type={showPassword ? "text" : "password"} name="password"
                   value={form.password} onChange={handleChange} required placeholder="••••••••"
+                  autoComplete="current-password"
+                  suppressHydrationWarning
                   style={{
                     width: "100%", padding: "0.7rem 2.5rem 0.7rem 2.5rem",
                     border: "1.5px solid #e5e7eb", borderRadius: "12px",
@@ -107,6 +111,7 @@ export default function LoginPage() {
                   onBlur={e => e.target.style.borderColor = "#e5e7eb"}
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}
+                suppressHydrationWarning
                   style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", fontSize: "16px" }}>
                   {showPassword ? "🙈" : "👁️"}
                 </button>
@@ -114,6 +119,7 @@ export default function LoginPage() {
             </div>
 
             <button type="submit" disabled={loading}
+            suppressHydrationWarning
               style={{
                 width: "100%", padding: "0.8rem",
                 background: loading ? "#93c5fd" : "linear-gradient(135deg, #1e3a5f, #2e86ab)",

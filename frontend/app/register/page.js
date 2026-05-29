@@ -73,6 +73,8 @@ export default function RegisterPage() {
                 <span style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", fontSize: "16px" }}>👤</span>
                 <input type="text" name="name" value={form.name} onChange={handleChange}
                   required placeholder="Your full name"
+                  autoComplete="name"
+                  suppressHydrationWarning
                   style={{
                     width: "100%", padding: "0.7rem 0.75rem 0.7rem 2.5rem",
                     border: "1.5px solid #e5e7eb", borderRadius: "12px",
@@ -92,6 +94,8 @@ export default function RegisterPage() {
                 <span style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", fontSize: "16px" }}>📧</span>
                 <input type="email" name="email" value={form.email} onChange={handleChange}
                   required placeholder="you@example.com"
+                  autoComplete="email"
+                  suppressHydrationWarning
                   style={{
                     width: "100%", padding: "0.7rem 0.75rem 0.7rem 2.5rem",
                     border: "1.5px solid #e5e7eb", borderRadius: "12px",
@@ -112,6 +116,8 @@ export default function RegisterPage() {
                 <input
                   type={showPassword ? "text" : "password"} name="password"
                   value={form.password} onChange={handleChange} required placeholder="Min. 6 characters"
+                  autoComplete="new-password"
+                  suppressHydrationWarning
                   style={{
                     width: "100%", padding: "0.7rem 2.5rem 0.7rem 2.5rem",
                     border: "1.5px solid #e5e7eb", borderRadius: "12px",
@@ -121,6 +127,7 @@ export default function RegisterPage() {
                   onBlur={e => e.target.style.borderColor = "#e5e7eb"}
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}
+                suppressHydrationWarning
                   style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", fontSize: "16px" }}>
                   {showPassword ? "🙈" : "👁️"}
                 </button>
@@ -128,6 +135,7 @@ export default function RegisterPage() {
             </div>
 
             <button type="submit" disabled={loading}
+            suppressHydrationWarning
               style={{
                 width: "100%", padding: "0.8rem",
                 background: loading ? "#93c5fd" : "linear-gradient(135deg, #1e3a5f, #2e86ab)",

@@ -64,6 +64,8 @@ export default function AdminLoginPage() {
                 <input type="text" value={form.username}
                   onChange={e => setForm({ ...form, username: e.target.value })}
                   required placeholder="Admin username"
+                  autoComplete="username"
+                  suppressHydrationWarning
                   style={{
                     width: "100%", padding: "0.7rem 0.75rem 0.7rem 2.5rem",
                     border: "1.5px solid #e5e7eb", borderRadius: "12px",
@@ -84,6 +86,8 @@ export default function AdminLoginPage() {
                 <input type={showPassword ? "text" : "password"} value={form.password}
                   onChange={e => setForm({ ...form, password: e.target.value })}
                   required placeholder="••••••••"
+                  autoComplete="current-password"
+                  suppressHydrationWarning
                   style={{
                     width: "100%", padding: "0.7rem 2.5rem 0.7rem 2.5rem",
                     border: "1.5px solid #e5e7eb", borderRadius: "12px",
@@ -93,13 +97,16 @@ export default function AdminLoginPage() {
                   onBlur={e => e.target.style.borderColor = "#e5e7eb"}
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}
+                suppressHydrationWarning
                   style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer" }}>
                   {showPassword ? "🙈" : "👁️"}
                 </button>
               </div>
             </div>
 
-            <button type="submit" disabled={loading} style={{
+            <button type="submit" disabled={loading} 
+            suppressHydrationWarning
+            style={{
               width: "100%", padding: "0.8rem",
               background: loading ? "#94a3b8" : "linear-gradient(135deg, #0f172a, #1e3a5f)",
               color: "#fff", border: "none", borderRadius: "12px",
