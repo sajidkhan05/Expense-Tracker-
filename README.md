@@ -2,7 +2,7 @@
 
 A full-stack web application for personal expense management with automatic categorisation, budget alerts, anomaly detection, and visual analytics. Built as an internship project at **MPOnline Limited**.
 
-Project Demo Video Link: https://drive.google.com/file/d/1GXd5ZVXkJmfEHLAtJfuoUgNZwGcDRu1R/view?usp=sharing
+Project Demo Video: https://drive.google.com/file/d/1GXd5ZVXkJmfEHLAtJfuoUgNZwGcDRu1R/view?usp=sharing
 
 ---
 
